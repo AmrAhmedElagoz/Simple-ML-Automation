@@ -1,0 +1,87 @@
+[build-system]
+requires= ["setuptools>=42.0", "wheel"]
+build-backend= "setuptools.build_meta"
+
+[project]
+name = "simpleML"
+version = "0.0.1"
+description = "Simple ML Automation with MLflow and Airflow"
+readme = "README.md"
+authors = [
+    {name = "Amr", email = "amrahmedelagoz@gmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: POSIX :: Linux",
+]
+keywords = ["machine learning", "python", "AI", "data science"]
+requires-python = ">=3.10"
+
+dependencies = [
+    "apache-airflow==3.0.1",
+    "pytorch-lightning==2.5.1.post0",
+    "torchvision==0.22.0",
+    "torch==2.7.0",
+    "mlflow==2.22.0",
+    "prometheus-client==0.21.1",
+    "apache-airflow-providers-fab==2.0.2"
+]
+
+[project.optional-dependencies]
+testing = [
+    "pytest==8.3.4",
+    "Sphinx==8.1.3",
+    "sphinx-rtd-theme==3.0.2",
+    "sphinx-autodoc-typehints==2.5.0",
+    "pytest-cov==6.0.0",
+    "mypy==1.13.0",
+    "flake8==7.1.1",
+    "tox==4.23.2",
+    "black==24.10.0",
+    "pytest-mock==3.14.0",
+    "pytest-watcher==0.4.3",
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=simpleML"
+testpaths = [
+    "tests",
+]
+
+[tool.mypy]
+mypy_path = "src"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
+
+[tool.black]
+line-length = 88  
+target-version = ['py310', 'py312']  
+skip-string-normalization = false  
+skip-magic-trailing-comma = false  
+include = '\.pyi?$'  
+exclude = '''
+/(
+    \.eggs         
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+)/
+'''
